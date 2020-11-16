@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useTestHook } from "./hook";
+import "./index.css";
 
-function App() {
+export default function App() {
+  const { useFormikProps } = useTestHook();
+  const { handleBlur, handleChange, handleSubmit } = useFormikProps;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="firstName"
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          name="lastName"
+          placeholder="lastName"
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
-
-export default App;
