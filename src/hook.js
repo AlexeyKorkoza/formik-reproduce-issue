@@ -1,4 +1,5 @@
 import { useFormik } from "formik";
+import { useState } from "react";
 
 export const useTestHook = () => {
   const useFormikProps = useFormik({
@@ -12,8 +13,14 @@ export const useTestHook = () => {
     },
     validateOnBlur: true
   });
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const toggleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  }
 
   return {
-    useFormikProps
+    isOpenModal,
+    toggleModal,
+    useFormikProps,
   };
 };
