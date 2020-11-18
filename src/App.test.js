@@ -1,8 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
 
-xtest('renders learn react link', () => {
+test('renders learn react link', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  // get the submit button of the form
+  const submitBtn = screen.getByText("Submit");
+  // click on it as a user would do,
+  // this should call the form
+  fireEvent.click(submitBtn)
 });
